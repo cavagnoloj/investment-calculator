@@ -13,5 +13,18 @@
 			<label id="principleLabel" for="principleInput">$1000</label>
 			<input id="principleInput" type="range" value="1000" min="100" max="10000" step="100">
 		</div>
+
+		<script>
+
+			const principleInput = document.getElementById('principleInput');
+			const principleLabel = document.getElementById('principleLabel');
+
+			principleInput.addEventListener("input", function() {
+				principleLabel.innerHTML = "$" + principleInput.value;
+			});
+			
+		</script>
+
+
 	</body>
 </html>
