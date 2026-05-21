@@ -14,17 +14,27 @@
 			<input id="principleInput" type="range" value="1000" min="100" max="10000" step="100">
 		</div>
 
+		<div>
+			<label id="yearsLabel" for="yearsInput">20 Years</label>
+			<input id="yearsInput" type="number"  value="20" min="1" max="50">
+		</div>
+
 		<script>
 
 			const principleInput = document.getElementById('principleInput');
 			const principleLabel = document.getElementById('principleLabel');
 
+			const yearsInput = document.getElementById('yearsInput');
+			const yearsLabel = document.getElementById('yearsLabel');
+
 			principleInput.addEventListener("input", function() {
 				principleLabel.innerHTML = "$" + principleInput.value;
 			});
-			
+
+			yearsInput.addEventListener("input", function() {
+				yearsLabel.innerHTML = yearsInput.value + " Years";
+			});
+
 		</script>
-
-
 	</body>
 </html>
