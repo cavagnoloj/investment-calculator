@@ -5,7 +5,7 @@
     <title>Investment Calculator</title>
   </head>
 
-  <body>  
+  <body>
     <h1>Investment Calculator</h1>
     <p>Use this to calculate the future value of your investment</p>
 
@@ -36,21 +36,28 @@
       let principle = 1000;
       let years = 20;
 
+      updateScreen(futureValue(principle, years));
+
       principleInput.addEventListener("input", function() {
         principle = principleInput.value;
         principleLabel.innerHTML = "$" + principle;
-        fvOutput.textContent = futureValue(principle, years);
+        updateScreen(futureValue(principle, years));
       });
 
       yearsInput.addEventListener("input", function() {
         years = yearsInput.value;
         yearsLabel.innerHTML = years + " Years";
-        fvOutput.textContent = futureValue(principle, years);
+        updateScreen(futureValue(principle, years));
+
       });
 
       function futureValue(p, y) {
         let fv = p * Math.pow(1 + 0.08, y);
         return Math.round(fv);
+      }
+
+      function updateScreen(fv) {
+        fvOutput.textContent = "At 8% interest, in " + years + " years your $" + principle + " will grow to $" + fv;
       }
 
     </script>
