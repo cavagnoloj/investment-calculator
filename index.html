@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Investment Calculator</title>
-	</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Investment Calculator</title>
+  </head>
 
-	<body>	
-		<h1>Investment Calculator</h1>
-		<p>Use this to calculate the future value of your investment</p>
+  <body>  
+    <h1>Investment Calculator</h1>
+    <p>Use this to calculate the future value of your investment</p>
 
-		<div>
-			<label id="principleLabel" for="principleInput">$1000</label>
-			<input id="principleInput" type="range" value="1000" min="100" max="10000" step="100">
-		</div>
+    <div>
+      <label id="principleLabel" for="principleInput">$1000</label>
+      <input id="principleInput" type="range" value="1000" min="100" max="10000" step="100">
+    </div>
 
-		<div>
-			<label id="yearsLabel" for="yearsInput">20 Years</label>
-			<input id="yearsInput" type="number"  value="20" min="1" max="50">
-		</div>
+    <div>
+      <label id="yearsLabel" for="yearsInput">20 Years</label>
+      <input id="yearsInput" type="number"  value="20" min="1" max="50">
+    </div>
 
-		<script>
+    <div>
+      <p id="fvOutput"></p>
+    </div>
 
-			const principleInput = document.getElementById('principleInput');
-			const principleLabel = document.getElementById('principleLabel');
+    <script>
 
-			const yearsInput = document.getElementById('yearsInput');
-			const yearsLabel = document.getElementById('yearsLabel');
+      const principleInput = document.getElementById('principleInput');
+      const principleLabel = document.getElementById('principleLabel');
 
-			principleInput.addEventListener("input", function() {
-				principleLabel.innerHTML = "$" + principleInput.value;
-			});
+      const yearsInput = document.getElementById('yearsInput');
+      const yearsLabel = document.getElementById('yearsLabel');
 
-			yearsInput.addEventListener("input", function() {
-				yearsLabel.innerHTML = yearsInput.value + " Years";
-			});
+      const fvOutput = document.getElementById('fvOutput');
 
-		</script>
-	</body>
+      let principle = 1000;
+      let years = 20;
+
+      principleInput.addEventListener("input", function() {
+        principle = principleInput.value;
+        principleLabel.innerHTML = "$" + principle;
+        fvOutput.textContent = futureValue(principle, years);
+      });
+
+      yearsInput.addEventListener("input", function() {
+        years = yearsInput.value;
+        yearsLabel.innerHTML = years + " Years";
+        fvOutput.textContent = futureValue(principle, years);
+      });
+
+      function futureValue(p, y) {
+        let fv = p * Math.pow(1 + 0.08, y);
+        return Math.round(fv);
+      }
+
+    </script>
+  </body>
 </html>
